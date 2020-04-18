@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const dishRouter = require('./routes/dishRouter');//importing dishRouter.js node module
+const promoRouter = require('./routes/promoRouter');
+const leaderRouter = require('./routes/leaderRouter');
 const hostname = 'localhost';
 const port = 3000;
 
@@ -14,6 +16,8 @@ app.use(morgan('dev'));//using developer morgan
 app.use(bodyParser.json());//allows us to parse the body of request message which is in json and added to the req as req.body
 
 app.use('/dishes', dishRouter);//mounting the dishRouter with /dishes
+app.use('/promo', promoRouter);
+app.use('/leader', leaderRouter);
 
 //seting up server to use html files in public folder
 app.use(express.static(__dirname+'/public'))//serve static file from directory name public in root folder
